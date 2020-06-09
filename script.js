@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
       var light1 = new BABYLON.PointLight("light1", new BABYLON.Vector3(0, 5,-6), scene);
       var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(6, 5, 3.5), scene);
       var light3 = new BABYLON.DirectionalLight("light3", new BABYLON.Vector3(20, -5, 20), scene);
-      light.intensity = 400;
+      light.intensity = 0;
       light1.intensity = 15;
       light2.intensity = 5;
       // Move the light with the camera
@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     function setupCamera(scene){
-      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 5, -20), scene);
+      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 5, 0), scene);
       camera.attachControl(canvas, true);
       //setup physics
       camera.applyGravity = true;
