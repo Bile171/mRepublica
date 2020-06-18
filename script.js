@@ -10,8 +10,12 @@ window.addEventListener('DOMContentLoaded', function () {
       var camera = setupCamera(scene);
       let building;
       // The first parameter can be used to specify which mesh to import. Here we import all meshes
-      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "untitledX4_optimized.babylon", scene, function (newMeshes) {
+      // BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "exemplo ambiente.gltf", scene, function (newMeshes) {
+
+      // BABYLON.SceneLoader.Append("https://raw.githubusercontent.com/Bile171/mRepublica/master/", "modelMuseu.gltf", scene, function (newMeshes) {
+      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "ex_vtnc.babylon", scene, function (newMeshes) {
       /*do something with the scene*/
+
         for(let i=0;i<newMeshes.length;i++){
           newMeshes[i].checkCollisions = true;
         }
@@ -25,10 +29,12 @@ window.addEventListener('DOMContentLoaded', function () {
       var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(200, 200, 100), scene);
       var light1 = new BABYLON.PointLight("light1", new BABYLON.Vector3(0, 5,-6), scene);
       var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(6, 5, 3.5), scene);
+      var light4 = new BABYLON.PointLight("light4", new BABYLON.Vector3(0, 10, -20), scene);
       var light3 = new BABYLON.DirectionalLight("light3", new BABYLON.Vector3(20, -5, 20), scene);
-      light.intensity = 000;
-      light1.intensity = 15;
-      light2.intensity = 5;
+      light.intensity = 50;
+      light1.intensity = 50;
+      light2.intensity = 50;
+      light4.intensity = 50;
       // Move the light with the camera
       scene.registerBeforeRender(function () {
           light.position = camera.position;
@@ -75,11 +81,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     function setupCamera(scene){
-      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 5, -20), scene);
+      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 10, -20), scene);
       camera.attachControl(canvas, true);
       //setup physics
       camera.applyGravity = true;
-      camera.speed = .5;
+      camera.speed = .3;
       camera.angularSensibility = 4000;
       camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
       camera.checkCollisions = true;
