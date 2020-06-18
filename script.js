@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
       var camera = setupCamera(scene);
       let building;
       // The first parameter can be used to specify which mesh to import. Here we import all meshes
-      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "untitledX4.babylon", scene, function (newMeshes) {
+      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "untitledX4_optimized.babylon", scene, function (newMeshes) {
       /*do something with the scene*/
         for(let i=0;i<newMeshes.length;i++){
           newMeshes[i].checkCollisions = true;
