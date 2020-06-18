@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
       var camera = setupCamera(scene);
       let building;
       // The first parameter can be used to specify which mesh to import. Here we import all meshes
-      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "scene.babylon", scene, function (newMeshes) {
+      BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/Bile171/mRepublica/master/", "untitledX4.babylon", scene, function (newMeshes) {
       /*do something with the scene*/
         for(let i=0;i<newMeshes.length;i++){
           newMeshes[i].checkCollisions = true;
@@ -21,17 +21,21 @@ window.addEventListener('DOMContentLoaded', function () {
       // Enable Collisions
       scene.collisionsEnabled = true;
       //setup lights
+
       var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(200, 200, 100), scene);
       var light1 = new BABYLON.PointLight("light1", new BABYLON.Vector3(0, 5,-6), scene);
       var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(6, 5, 3.5), scene);
       var light3 = new BABYLON.DirectionalLight("light3", new BABYLON.Vector3(20, -5, 20), scene);
-      light.intensity = 0;
+      light.intensity = 000;
       light1.intensity = 15;
       light2.intensity = 5;
       // Move the light with the camera
       scene.registerBeforeRender(function () {
           light.position = camera.position;
       });
+
+      // scene.debugLayer.show();
+
       return scene;
     }
 
@@ -71,17 +75,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     function setupCamera(scene){
-      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 5, 0), scene);
+      var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 5, -20), scene);
       camera.attachControl(canvas, true);
       //setup physics
       camera.applyGravity = true;
-      camera.speed =  .5;
+      camera.speed = .5;
       camera.angularSensibility = 4000;
       camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
       camera.checkCollisions = true;
       return camera
     }
-
 
     var scene = createScene();
     engine.runRenderLoop(function () {
